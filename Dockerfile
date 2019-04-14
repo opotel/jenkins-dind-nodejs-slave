@@ -5,20 +5,12 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-RUN apt-get update \
-    && apt-get install -y wget openssl ca-certificates \
-    && cd /tmp \
-    && wget -qO jdk8.tar.gz \
-       --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-       http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz \
-    && tar xzf jdk8.tar.gz -C /opt \
-    && mv /opt/jdk* /opt/java \
-    && rm /tmp/jdk8.tar.gz \
-    && update-alternatives --install /usr/bin/java java /opt/java/bin/java 100 \
-    && update-alternatives --install /usr/bin/javac javac /opt/java/bin/javac 100
 
-ENV JAVA_HOME /opt/java
+RUN  curl -sSL https://get.docker.com/ | sh
+RUN apt-get update &&\
+    apt-get install -y openjdk-8-jdk &&\
+    apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 
 ENV HOME /home/${user}
 RUN groupadd -g ${gid} ${group}
@@ -39,4 +31,3 @@ VOLUME /home/${user}/.jenkins
 VOLUME ${AGENT_WORKDIR}
 WORKDIR /home/${user}
 
-RUN  curl -sSL https://get.docker.com/ | sh
