@@ -7,3 +7,4 @@ RUN apt-get install nodejs
 RUN apt-get -y install bzip2
 RUN apt-get -y install software-properties-common
 RUN apt-get -y install python-software-properties
+RUN npm install -g artillery  
