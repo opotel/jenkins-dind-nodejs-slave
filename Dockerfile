@@ -5,7 +5,7 @@ ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
 ARG gid=1000
-
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get update \
     && apt-get install -y wget openssl ca-certificates \
     && cd /tmp \
