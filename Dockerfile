@@ -6,12 +6,14 @@ LABEL "org.label-schema.vendor"="OPOTEL Ltd" \
     description="Build, Test and Deploy as docker image Node.js projects"
     
 RUN curl -sSL https://get.docker.com/ | sh
-RUN curl -sL https://deb.nodesource.com/setup_11.x -o nodesource_setup.sh && bash nodesource_setup.sh
+RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh
 RUN apt-get install -y nodejs
 RUN npm install -g typescript 
-RUN npm -g install selenium-node-webdriver 
 RUN npm -g install karma 
 RUN npm -g install mocha 
+RUN npm -g install chai 
+
 #optional
 #RUN npm install -g cucumber 
+#RUN npm -g install selenium-node-webdriver 
 
