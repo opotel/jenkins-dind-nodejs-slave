@@ -13,6 +13,7 @@ RUN npm -g install karma
 RUN npm -g install mocha 
 RUN npm -g install chai 
 RUN npm -g install cucumber
-RUN npm -g install selenium-node-webdriver 
+RUN npm -g install selenium-webdriver
+
 
 
