@@ -8,6 +8,7 @@ LABEL "org.label-schema.vendor"="OPOTEL Ltd" \
 RUN curl -sSL https://get.docker.com/ | sh
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh
 RUN apt-get install -y nodejs
+RUN npm -g install pm2@latest 
 RUN npm -g install typescript 
 RUN npm -g install karma 
 RUN npm -g install mocha 
