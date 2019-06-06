@@ -15,7 +15,7 @@ RUN npm -g install mocha
 RUN npm -g install chai 
 RUN npm -g install cucumber
 RUN npm -g install jest
-RUN npm -g install artillery
+RUN npm -g install artillery --unsafe-perm=true --allow-root
 RUN npm -g install selenium-webdriver
 
 
