@@ -6,8 +6,10 @@ LABEL "org.label-schema.vendor"="OPOTEL Ltd" \
     description="Docker Jenkins Slave; Build, Test and Deploy Node.js projects and build Docker images from Dockerfile"
     
 RUN apt-get update && apt-get upgrade -y   
+
 RUN curl -sSL https://get.docker.com/ | sh
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh
+
 RUN apt-get install -y nodejs
 
 RUN npm -g install pm2@latest 
