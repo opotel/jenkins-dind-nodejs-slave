@@ -5,11 +5,11 @@ LABEL "org.label-schema.vendor"="OPOTEL Ltd" \
     maintainer="dev@opotel.com" \
     description="Build, Test and Deploy Node.js projects and buld Docker images from Dockerfile"
     
+RUN apt-get update && apt-get upgrade -y   
 RUN curl -sSL https://get.docker.com/ | sh
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-RUN nvm install 12.6.0
-RUN nvm install 10.16.0
-RUN nvm use 12.6.0
+RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+
 RUN npm -g install pm2@latest 
 RUN npm -g install typescript
 RUN npm -g install nodemon
