@@ -1,28 +1,19 @@
 FROM jenkins/ssh-slave
 
 LABEL "org.label-schema.vendor"="OPOTEL Ltd" \
-    version="1.0" \
+    version="2.0" \
     maintainer="dev@opotel.com" \
-    description="Docker Jenkins Slave; Build, Test and Deploy Node.js projects and build Docker images from Dockerfile"
+    description="Docker Jenkins Slave with Node.js 12.x, NPM Testing packages & Tools and Docker engine"
     
-RUN apt-get update && apt-get upgrade -y   
-
-RUN curl -sSL https://get.docker.com/ | sh
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh
-
-RUN apt-get install -y nodejs
-
-RUN npm -g install pm2@latest 
-RUN npm -g install typescript
-RUN npm -g install nodemon
-RUN npm -g install karma 
-RUN npm -g install mocha 
-RUN npm -g install chai 
-RUN npm -g install cucumber
-RUN npm -g install jest
-RUN npm -g install enzyme
-RUN npm -g install artillery --unsafe-perm=true --allow-root
-RUN npm -g install selenium-webdriver
+RUN apt-get update && apt-get upgrade -y  && \
+    curl -sSL https://get.docker.com/ | sh && \
+    curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh && bash nodesource_setup.sh && \
+    apt-get install -y nodejs
+    
+RUN npm i -g pm2@latest typescript nodemon karma \
+             mocha chai jest enzyme cucumber
+RUN npm i -g artillery --unsafe-perm=true --allow-root
+RUN npm i -g selenium-webdriver firebase
 
 
 
