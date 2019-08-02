@@ -11,9 +11,9 @@ RUN apt-get update && apt-get upgrade -y  && \
     apt-get install -y nodejs
     
 RUN npm i -g pm2@latest typescript nodemon karma \
-             mocha chai jest enzyme cucumber
-RUN npm i -g artillery --unsafe-perm=true --allow-root
-RUN npm i -g selenium-webdriver firebase
+             mocha chai jest enzyme cucumber \
+             artillery --unsafe-perm=true --allow-root \
+             selenium-webdriver 
 
 
 
